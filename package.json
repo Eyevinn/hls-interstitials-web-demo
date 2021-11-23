@@ -1,0 +1,20 @@
+{
+  "name": "@eyevinn/hls-interstitials-web-demo",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel src/index.html --no-cache"
+  },
+  "author": "Eyevinn Technology <work@eyevinn.se>",
+  "contributors": [
+    "Benjamin Wallberg <benjamin.wallberg@eyevinn.se> (Eyevinn Technology AB)"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "parcel": "^2.0.1",
+    "prettier": "^2.4.1"
+  },
+  "dependencies": {
+    "hls.js": "^1.1.1"
+  }
+}
