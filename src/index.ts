@@ -14,14 +14,38 @@ function playNative(src: string) {
   master.src = src;
 }
 
+const DEMO_PAYLOAD = {
+  uri: "https://maitv-vod.lab.eyevinn.technology/VINN.mp4/master.m3u8",
+  breaks: [
+    {
+      pos: 0,
+      duration: 10000,
+      url: "http://lab.cdn.eyevinn.technology/probably-the-best-10s.mp4/manifest.m3u8",
+    },
+    {
+      pos: 20000,
+      duration: 10000,
+      url: "http://lab.cdn.eyevinn.technology/probably-the-best-10s.mp4/manifest.m3u8",
+    },
+    {
+      pos: 100000,
+      duration: 10000,
+      url: "http://lab.cdn.eyevinn.technology/probably-the-best-10s.mp4/manifest.m3u8",
+    },
+  ],
+};
+
 window.onload = () => {
   const playSafari = document.querySelector<HTMLButtonElement>("#play_safari");
   if (!isSafari()) {
     playSafari.disabled = true;
-    document.querySelector<HTMLDivElement>("#not-supported").style.display = "block"; 
+    document.querySelector<HTMLDivElement>("#not-supported").style.display =
+      "block";
   } else {
     const wrapper = document.querySelector<HTMLDivElement>("#wrapper");
-    const src = `https://lambda-ssl.eyevinn.technology/stitch/master.m3u8?payload=ewogICAgICAidXJpIjogImh0dHBzOi8vbWFpdHYtdm9kLmxhYi5leWV2aW5uLnRlY2hub2xvZ3kvVklOTi5tcDQvbWFzdGVyLm0zdTgiLAogICAgICAiYnJlYWtzIjogWwogICAgICAgIHsgInBvcyI6IDAsICJkdXJhdGlvbiI6IDE1MDAwLCAidXJsIjogImh0dHBzOi8vbWFpdHYtdm9kLmxhYi5leWV2aW5uLnRlY2hub2xvZ3kvYWRzL2Fwb3RlYS0xNXMubXA0L21hc3Rlci5tM3U4IiB9LAogICAgICAgIHsgInBvcyI6IDU1MDAwLCAiZHVyYXRpb24iOiAxNTAwMCwgInVybCI6ICJodHRwczovL21haXR2LXZvZC5sYWIuZXlldmlubi50ZWNobm9sb2d5L2Fkcy9hcG90ZWEtMTVzLm1wNC9tYXN0ZXIubTN1OCIgfQogICAgICBdCn0=&i=1`;
+    const src = `https://lambda-ssl.eyevinn.technology/stitch/master.m3u8?payload=${btoa(
+      JSON.stringify(DEMO_PAYLOAD)
+    )}&i=1`;
     playSafari.addEventListener("click", () => {
       wrapper.style.display = "block";
       playNative(src);
