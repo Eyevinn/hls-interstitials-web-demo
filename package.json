@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "parcel src/index.html --no-cache"
+    "start": "parcel src/index.html --no-cache",
+    "build": "parcel build src/index.html"
   },
   "author": "Eyevinn Technology <work@eyevinn.se>",
   "contributors": [
