@@ -43,9 +43,11 @@ window.onload = () => {
       "block";
   } else {
     const wrapper = document.querySelector<HTMLDivElement>("#wrapper");
-    const src = `https://lambda-ssl.eyevinn.technology/stitch/master.m3u8?payload=${btoa(
-      JSON.stringify(DEMO_PAYLOAD)
-    )}&i=1`;
+    const src =
+      new URLSearchParams(window.location.search).get("url") ||
+      `https://lambda-ssl.eyevinn.technology/stitch/master.m3u8?payload=${btoa(
+        JSON.stringify(DEMO_PAYLOAD)
+      )}&i=1`;
     playSafari.addEventListener("click", () => {
       wrapper.style.display = "block";
       playNative(src);
